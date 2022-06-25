@@ -26,6 +26,21 @@ namespace ExpensiveControlApp.Controllers
             return View(listExpensiveDTO);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(ListExpensiveDTO listExpensiveDTO)
+        {
+            try
+            {
+                listExpensiveDTO.Items = await _expensiveService.FindBy(listExpensiveDTO.StartDate, listExpensiveDTO.EndDate);
+
+                return View(listExpensiveDTO);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("CustomError", ex.Message);
+                return View(listExpensiveDTO);
+            }
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
