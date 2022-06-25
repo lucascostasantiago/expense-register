@@ -1,8 +1,11 @@
 using ExpensiveControlApp.Infra.Database;
+using ExpensiveControlApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ExpensiveControlContext>();
+
+builder.Services.AddScoped<IExpensiveService, ExpensiveService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
