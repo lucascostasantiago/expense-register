@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExpensiveControlApp.Services
 {
-    public class ExpensiveService
+    public class ExpensiveService : IExpensiveService
     {
         private readonly ExpensiveControlContext _dbContext;
 
@@ -26,6 +26,9 @@ namespace ExpensiveControlApp.Services
 
         public async Task<List<Expensive>> FindBy(DateTime startDate, DateTime endDate)
         {
+            if (startDate > endDate)
+                throw new Exception("Data final deve ser maior que data inicial.");
+
             var items = await _dbContext.Expensives.Where(e => e.Date >= startDate && e.Date <= endDate).AsNoTracking().ToListAsync();
             return items;
         }
