@@ -1,4 +1,5 @@
 ﻿using ExpensiveControlApp.Models;
+using ExpensiveControlApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +8,12 @@ namespace ExpensiveControlApp.Controllers
     public class ExpensiveController : Controller
     {
         private readonly ILogger<ExpensiveController> _logger;
+        private readonly IExpensiveService _expensiveService;
 
-        public ExpensiveController(ILogger<ExpensiveController> logger)
+        public ExpensiveController(ILogger<ExpensiveController> logger, IExpensiveService expensiveService)
         {
             _logger = logger;
+            _expensiveService = expensiveService;
         }
 
         public IActionResult Index()
