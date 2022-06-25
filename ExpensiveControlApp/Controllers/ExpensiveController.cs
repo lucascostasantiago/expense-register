@@ -4,11 +4,11 @@ using System.Diagnostics;
 
 namespace ExpensiveControlApp.Controllers
 {
-    public class HomeController : Controller
+    public class ExpensiveController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ExpensiveController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ExpensiveController(ILogger<ExpensiveController> logger)
         {
             _logger = logger;
         }
