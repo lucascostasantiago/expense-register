@@ -1,4 +1,8 @@
+using ExpensiveControlApp.Infra.Database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ExpensiveControlContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
