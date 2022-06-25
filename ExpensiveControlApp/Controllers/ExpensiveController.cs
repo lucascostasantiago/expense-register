@@ -42,6 +42,13 @@ namespace ExpensiveControlApp.Controllers
             }
         }
 
+        public async Task<IActionResult> Create()
+        {
+            var createExpensiveDTO = new CreateExpensiveDTO();
+
+            return View(createExpensiveDTO);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

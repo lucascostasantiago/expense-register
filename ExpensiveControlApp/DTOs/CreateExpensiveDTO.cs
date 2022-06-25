@@ -4,6 +4,10 @@ namespace ExpensiveControlApp.DTOs
 {
     public class CreateExpensiveDTO
     {
+        public CreateExpensiveDTO()
+        {
+            Date = DateTime.Now;
+        }
 
         [Required(ErrorMessage = "Descrição é Obrigatoria.")]
         public string Description { get; set; }
